@@ -20,8 +20,8 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input onclick="removeLine();" type=button value="Remove line">
-      <input onclick="addLine();" type=button value="Restore line">
+      <input onclick="hideControls();" type=button value="Hide controls">
+      <input onclick="showAll();" type=button value="Show all">
     </div>
     <div id="map"></div>
     <script>
@@ -36,17 +36,26 @@ function initMap() {
     center: {lat: -18.142, lng: 178.432},
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
+  //Default options
+  var options = {
+    curveColor : "#FF0000",
+    controlColor : "#000000",
+    curveSize : 2,
+    controlSize : 2,
+    resolution : 60,
+    locking : false
+  };
 
-  curve = new BezierCurve([-18.142,178.431],map);
+  curve = new BezierCurve([-18.142,178.431],map, options);
   curve.init();
 };
 
-function addLine() {
-  curve.showCurve();
+function showAll() {
+  curve.showAll();
 };
 
-function removeLine() {
-  curve.hideCurve();
+function hideControls() {
+  curve.hideControls();
 };
 
     </script>
